@@ -3,12 +3,14 @@
 「Next.jsの考え方」(https://zenn.dev/akfm/books/nextjs-basic-principle) の学習まとめ一覧。
 各章の詳細は個別ファイルを参照。新しい章を学んだら `_template.md` をコピーして追加し、ここに1行足す。
 
+📖 [用語集](glossary.md) ― 学習中に出てきた用語のまとめ。新しい用語が出たら随時追記する。
+
 ## 導入
 - [x] [Chapter01 はじめに](01-intro.md)
 
 ## 第1部 データフェッチ
-- [ ] Chapter02 第1部 データフェッチ（概要）
-- [ ] Chapter03 データフェッチ on Server Components
+- [x] [Chapter02 第1部 データフェッチ（概要）](02-part1-data-fetching.md)
+- [x] [Chapter03 データフェッチ on Server Components](03-server-components-data-fetching.md)
 - [ ] Chapter04 データフェッチ コロケーション
 - [ ] Chapter05 Request Memoization
 - [ ] Chapter06 並行データフェッチ
