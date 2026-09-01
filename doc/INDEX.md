@@ -10,7 +10,7 @@
 
 ## 第1部 データフェッチ
 - [x] [Chapter02 第1部 データフェッチ（概要）](02-part1-data-fetching.md)
-- [ ] Chapter03 データフェッチ on Server Components
+- [x] [Chapter03 データフェッチ on Server Components](03-server-components-data-fetching.md)
 - [ ] Chapter04 データフェッチ コロケーション
 - [ ] Chapter05 Request Memoization
 - [ ] Chapter06 並行データフェッチ

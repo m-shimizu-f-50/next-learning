@@ -30,3 +30,8 @@
 ## データフェッチ
 
 - **バックエンドAPI分離アプローチ**: Next.js側でDBに直接アクセスせず、別に立てたバックエンドAPIを叩いてデータ取得する構成。本書はこちらを前提に解説する（対比: DB統合アプローチ）（[Chapter2](02-part1-data-fetching.md)）
+- **God API**: 1つのAPIエンドポイントが多くの用途・画面のデータをまとめて返す、責務が肥大化したAPI。通信回数を減らせる一方、変更容易性が下がりやすい（[Chapter3](03-server-components-data-fetching.md)）
+- **Chatty API（おしゃべりなAPI）**: 責務が小さく細粒度に分かれたAPI。コロケーション・カプセル化しやすい一方、通信回数が増えやすく、ウォーターフォールが起きやすい（[Chapter3](03-server-components-data-fetching.md)）
+- **3rd partyライブラリ**: 自社コードではなく外部が公開しているパッケージ。クライアントサイドのデータフェッチ文脈ではSWR/React Query/Apollo Client/Relay/tRPC等を指す。学習コスト・バンドルサイズ増加の要因になる（[Chapter3](03-server-components-data-fetching.md)）
+- **Server Functions**: `"use server"`でマークし、クライアントサイドから呼び出せるようにしたサーバー関数。「Server Componentsには`"use server"`が必要」は誤解で、`"use server"`はServer Functions用のマーク（詳細はChapter11）（[Chapter3](03-server-components-data-fetching.md)）
+- **RSC Payload**: Server Componentsの実行結果としてクライアントに送られるデータ形式（HTMLとは別に、Reactがハイドレーションや差分更新に使う）（[Chapter3](03-server-components-data-fetching.md)）
