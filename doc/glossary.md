@@ -35,3 +35,6 @@
 - **3rd partyライブラリ**: 自社コードではなく外部が公開しているパッケージ。クライアントサイドのデータフェッチ文脈ではSWR/React Query/Apollo Client/Relay/tRPC等を指す。学習コスト・バンドルサイズ増加の要因になる（[Chapter3](03-server-components-data-fetching.md)）
 - **Server Functions**: `"use server"`でマークし、クライアントサイドから呼び出せるようにしたサーバー関数。「Server Componentsには`"use server"`が必要」は誤解で、`"use server"`はServer Functions用のマーク（詳細はChapter11）（[Chapter3](03-server-components-data-fetching.md)）
 - **RSC Payload**: Server Componentsの実行結果としてクライアントに送られるデータ形式（HTMLとは別に、Reactがハイドレーションや差分更新に使う）（[Chapter3](03-server-components-data-fetching.md)）
+- **コロケーション（Colocation）**: コードをできるだけ関連性のある場所に配置すること。データフェッチの文脈では「データを使うコンポーネント自身にfetch処理を書く」ことを指す（[Chapter4](04-data-fetching-colocation.md)）
+- **バケツリレー（Props Drilling）**: 親コンポーネントで取得したデータを、使わない中間層も含めて子・孫へpropsとして渡し続ける実装。Pages Routerの`getServerSideProps`等で発生しやすい（[Chapter4](04-data-fetching-colocation.md)）
+- **Request Memoization**: 同じレンダリング中に同一内容の`fetch`呼び出しが複数回発生しても、実際のネットワーク通信は1回だけ実行される仕組み。これによりコロケーション（各コンポーネントが独立してfetchすること）と通信効率を両立できる（詳細はChapter5）（[Chapter4](04-data-fetching-colocation.md)）

@@ -11,7 +11,7 @@
 ## 第1部 データフェッチ
 - [x] [Chapter02 第1部 データフェッチ（概要）](02-part1-data-fetching.md)
 - [x] [Chapter03 データフェッチ on Server Components](03-server-components-data-fetching.md)
-- [ ] Chapter04 データフェッチ コロケーション
+- [x] [Chapter04 データフェッチ コロケーション](04-data-fetching-colocation.md)
 - [ ] Chapter05 Request Memoization
 - [ ] Chapter06 並行データフェッチ
 - [ ] Chapter07 N+1とDataLoader
