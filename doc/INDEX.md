@@ -13,7 +13,7 @@
 - [x] [Chapter03 データフェッチ on Server Components](03-server-components-data-fetching.md)
 - [x] [Chapter04 データフェッチ コロケーション](04-data-fetching-colocation.md)
 - [x] [Chapter05 Request Memoization](05-request-memoization.md)
-- [ ] Chapter06 並行データフェッチ
+- [x] [Chapter06 並行データフェッチ](06-parallel-data-fetching.md)
 - [ ] Chapter07 N+1とDataLoader
 - [ ] Chapter08 細粒度のREST API設計
 - [ ] Chapter09 ユーザー操作とデータフェッチ

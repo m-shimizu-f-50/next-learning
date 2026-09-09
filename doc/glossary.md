@@ -40,3 +40,4 @@
 - **Request Memoization**: 同じレンダリング中に同一URL・同一オプションの`fetch`呼び出しが複数回発生しても、実際のネットワーク通信は1回だけ実行される仕組み。これによりコロケーション（各コンポーネントが独立してfetchすること）と通信効率を両立できる。オプションが1つでも異なると別リクエスト扱いになる点に注意（[Chapter4](04-data-fetching-colocation.md) / [Chapter5](05-request-memoization.md)）
 - **データフェッチ層**: 複数コンポーネントで使う可能性のあるデータフェッチ処理を1つの共通関数（ファイル）に分離したもの。Request Memoizationが「オプションのズレ」で効かなくなる事故を防ぐ（[Chapter5](05-request-memoization.md)）
 - **server-only**: importするとそのモジュールがClient Componentからimportされた際にビルドエラーになるパッケージ。データフェッチ層など、サーバー専用のコードを誤ってクライアントで使ってしまう事故を防ぐ。無い場合、ビルド・実行時ともにエラーが出ないまま秘匿情報がクライアントバンドルに漏れることがある（[Chapter5](05-request-memoization.md)）
+- **preloadパターン**: 親子関係（ネスト）にせざるを得ずウォーターフォールが発生する箇所で、子が使うデータフェッチ関数を親コンポーネントの中で`await`せず`void`で先に呼んでおく（`void getCurrentUser()`）ことで、レンダリングの直列性は保ったまま通信だけ先行して開始させるテクニック。Request Memoizationにより子が同じ関数を呼んだ時に結果を再利用できる（[Chapter6](06-parallel-data-fetching.md)）
