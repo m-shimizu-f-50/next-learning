@@ -41,3 +41,7 @@
 - **データフェッチ層**: 複数コンポーネントで使う可能性のあるデータフェッチ処理を1つの共通関数（ファイル）に分離したもの。Request Memoizationが「オプションのズレ」で効かなくなる事故を防ぐ（[Chapter5](05-request-memoization.md)）
 - **server-only**: importするとそのモジュールがClient Componentからimportされた際にビルドエラーになるパッケージ。データフェッチ層など、サーバー専用のコードを誤ってクライアントで使ってしまう事故を防ぐ。無い場合、ビルド・実行時ともにエラーが出ないまま秘匿情報がクライアントバンドルに漏れることがある（[Chapter5](05-request-memoization.md)）
 - **preloadパターン**: 親子関係（ネスト）にせざるを得ずウォーターフォールが発生する箇所で、子が使うデータフェッチ関数を親コンポーネントの中で`await`せず`void`で先に呼んでおく（`void getCurrentUser()`）ことで、レンダリングの直列性は保ったまま通信だけ先行して開始させるテクニック。Request Memoizationにより子が同じ関数を呼んだ時に結果を再利用できる（[Chapter6](06-parallel-data-fetching.md)）
+- **N+1データフェッチ**: リスト（N件）を取得した後、各要素ごとに追加で1回ずつ個別のリクエストを発生させてしまうアンチパターン。データフェッチをコンポーネント単位に細かく分割しすぎると起きやすい。各要素のURLが異なるためRequest Memoizationも効かない（[Chapter7](07-n-plus-1-dataloader.md)）
+- **DataLoader**: GraphQLサーバー等でよく使われる、データアクセスをバッチ処理・キャッシュするライブラリ。短期間に`loader.load(id)`が複数回呼ばれると、idがまとめられて1つのバッチ関数に配列で渡され、通信を1回にまとめられる。バッチ関数は「`keys`と同じ順序・同じ長さの配列を返す」という契約を守る必要がある（[Chapter7](07-n-plus-1-dataloader.md)）
+- **React.cache()**: 渡した関数を、同じレンダリング（リクエスト）内で同じ引数なら前回の実行結果を再利用するようにラップする仕組み。DataLoaderのインスタンスをリクエスト単位で分離する（複数ユーザー間のデータ漏洩を防ぐ）ためだけでなく、同一レンダリング内で必ず同じインスタンスを使わせてバッチ処理自体を成立させるためにも必須（[Chapter7](07-n-plus-1-dataloader.md)）
+- **Eager Loading / Lazy Loading**: DataLoaderは必要になった時点でバッチ取得するLazy Loadingの一種。対して、最初の1回のリクエストで関連情報を全部取得するのがEager Loading。バックエンドAPIの都合でLazy Loadingが適さない場合に検討するが、偏りすぎるとGod APIになる（[Chapter7](07-n-plus-1-dataloader.md)）
