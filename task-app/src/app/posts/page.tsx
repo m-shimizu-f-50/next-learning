@@ -1,3 +1,4 @@
+import PostItem from './components/PostItem';
 import { fetchPosts, PostResponse } from './lib/fetcher';
 
 export default async function Page() {
@@ -9,7 +10,7 @@ export default async function Page() {
 				{posts.map((post) => (
 					<li key={post.id}>
 						<h2>{post.title}</h2>
-						<p>{post.body}</p>
+						<PostItem userId={post.userId} />
 					</li>
 				))}
 			</ul>
